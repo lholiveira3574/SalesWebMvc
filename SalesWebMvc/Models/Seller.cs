@@ -10,16 +10,23 @@ namespace SalesWebMvc.Models
         public int Id { get; set; }
 
         [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Campo {0} é Obrigatório")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} deve ter tamanho entre {2} e {1}")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Campo {0} é Obrigatório")]
+        [EmailAddress(ErrorMessage = "Email inválido")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Campo {0} é Obrigatório")]
         [Display(Name = "Data Aniversário")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
+        [Required(ErrorMessage = "Campo {0} é Obrigatório")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} deve ser de no mínimo {1} e máximo {2}")]
         [Display(Name = "Salário")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
